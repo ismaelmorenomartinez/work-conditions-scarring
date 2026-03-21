@@ -399,6 +399,27 @@
     "text": "Domain Profile\nThe domain profile (.claude/references/domain-profile.md) calibrates all agents to your field. Agents read their discipline from this file; the default is economics if not specified. Fill it in manually or use /discover (interactive interview) to populate it:\n\nField & adjacent subfields — inferred from your topic\nTarget journals — ranked by tier\nCommon data sources — datasets typical for your area\nCommon identification strategies — designs used in your literature\nField conventions — estimation quirks, clustering norms\nSeminal references — papers every referee expects you to cite\nReferee concerns — the “gotcha” questions referees always ask"
   },
   {
+    "objectID": "user-guide.html#automatic-upgrade",
+    "href": "user-guide.html#automatic-upgrade",
+    "title": "User Guide",
+    "section": "Automatic Upgrade",
+    "text": "Automatic Upgrade\nRun /tools upgrade inside your project. It:\n\nFetches the latest clo-author infrastructure from upstream\nReplaces .claude/ (agents, skills, rules, references, hooks)\nPreserves your content (paper, scripts, data, bibliography)\nUpdates paths in CLAUDE.md to match your folder structure\nReports what changed and what needs manual attention"
+  },
+  {
+    "objectID": "user-guide.html#manual-upgrade",
+    "href": "user-guide.html#manual-upgrade",
+    "title": "User Guide",
+    "section": "Manual Upgrade",
+    "text": "Manual Upgrade\n\nBack up: git stash any uncommitted work\nAdd upstream: git remote add upstream https://github.com/hugosantanna/clo-author.git\nCopy infrastructure: replace .claude/ and templates/ with the 3.0 versions\nKeep your content: don’t rename folders that already have files\nUpdate CLAUDE.md: adjust paths to match your actual layout"
+  },
+  {
+    "objectID": "user-guide.html#what-changed-in-3.0",
+    "href": "user-guide.html#what-changed-in-3.0",
+    "title": "User Guide",
+    "section": "What Changed in 3.0",
+    "text": "What Changed in 3.0\n\n\n\n\n\n\n\n\nComponent\n2.x\n3.0\n\n\n\n\nScope\nEconomics only\nAll empirical social science\n\n\nPeer review\nScore averaging\nEditor + dispositions + desk reject\n\n\nJournal profiles\n15 (economics)\n35+ across 5 fields\n\n\nProfile location\n.claude/rules/\n.claude/references/ (on-demand)\n\n\nFolder structure\nPaper/, Figures/, Tables/, Talks/\npaper/ (self-contained)\n\n\nPresentations\nBeamer only\nBeamer + Quarto RevealJS\n\n\nMemory\n[LEARN] tags\nAuto-memory (built-in)\n\n\nContext overhead\n~3,500 lines/session\n~1,000 lines/session\n\n\nAgent prompts\nEconomics-specific\nField-neutral (read from domain profile)\n\n\n\nKey principle: The upgrade adapts to your project. It never renames folders with content or overwrites filled-in profiles."
+  },
+  {
     "objectID": "user-guide.html#sec-create-skills",
     "href": "user-guide.html#sec-create-skills",
     "title": "User Guide",

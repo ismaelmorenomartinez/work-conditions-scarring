@@ -230,6 +230,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#customizing-for-your-domain" id="toc-customizing-for-your-domain" class="nav-link" data-scroll-target="#customizing-for-your-domain">Customizing for Your Domain</a>
   <ul class="collapse">
   <li><a href="#domain-profile" id="toc-domain-profile" class="nav-link" data-scroll-target="#domain-profile">Domain Profile</a></li>
+  </ul></li>
+  <li><a href="#sec-upgrading" id="toc-sec-upgrading" class="nav-link" data-scroll-target="#sec-upgrading">Upgrading from 2.x</a>
+  <ul class="collapse">
+  <li><a href="#automatic-upgrade" id="toc-automatic-upgrade" class="nav-link" data-scroll-target="#automatic-upgrade">Automatic Upgrade</a></li>
+  <li><a href="#manual-upgrade" id="toc-manual-upgrade" class="nav-link" data-scroll-target="#manual-upgrade">Manual Upgrade</a></li>
+  <li><a href="#what-changed-in-3.0" id="toc-what-changed-in-3.0" class="nav-link" data-scroll-target="#what-changed-in-3.0">What Changed in 3.0</a></li>
   <li><a href="#sec-create-skills" id="toc-sec-create-skills" class="nav-link" data-scroll-target="#sec-create-skills">Creating Custom Skills</a></li>
   </ul></li>
   <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
@@ -747,6 +753,98 @@ Phase 5: Submission
 <li><strong>Seminal references</strong> — papers every referee expects you to cite</li>
 <li><strong>Referee concerns</strong> — the “gotcha” questions referees always ask</li>
 </ul>
+<hr>
+</section>
+</section>
+<section id="sec-upgrading" class="level1">
+<h1>Upgrading from 2.x</h1>
+<p>If you have an existing project using clo-author 2.x, you can upgrade to 3.0 without losing any of your work.</p>
+<section id="automatic-upgrade" class="level2">
+<h2 class="anchored" data-anchor-id="automatic-upgrade">Automatic Upgrade</h2>
+<p>Run <code>/tools upgrade</code> inside your project. It:</p>
+<ol type="1">
+<li>Fetches the latest clo-author infrastructure from upstream</li>
+<li>Replaces <code>.claude/</code> (agents, skills, rules, references, hooks)</li>
+<li>Preserves your content (paper, scripts, data, bibliography)</li>
+<li>Updates paths in CLAUDE.md to match your folder structure</li>
+<li>Reports what changed and what needs manual attention</li>
+</ol>
+</section>
+<section id="manual-upgrade" class="level2">
+<h2 class="anchored" data-anchor-id="manual-upgrade">Manual Upgrade</h2>
+<ol type="1">
+<li><strong>Back up:</strong> <code>git stash</code> any uncommitted work</li>
+<li><strong>Add upstream:</strong> <code>git remote add upstream https://github.com/hugosantanna/clo-author.git</code></li>
+<li><strong>Copy infrastructure:</strong> replace <code>.claude/</code> and <code>templates/</code> with the 3.0 versions</li>
+<li><strong>Keep your content:</strong> don’t rename folders that already have files</li>
+<li><strong>Update CLAUDE.md:</strong> adjust paths to match your actual layout</li>
+</ol>
+</section>
+<section id="what-changed-in-3.0" class="level2">
+<h2 class="anchored" data-anchor-id="what-changed-in-3.0">What Changed in 3.0</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 52%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>2.x</th>
+<th>3.0</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scope</td>
+<td>Economics only</td>
+<td>All empirical social science</td>
+</tr>
+<tr class="even">
+<td>Peer review</td>
+<td>Score averaging</td>
+<td>Editor + dispositions + desk reject</td>
+</tr>
+<tr class="odd">
+<td>Journal profiles</td>
+<td>15 (economics)</td>
+<td>35+ across 5 fields</td>
+</tr>
+<tr class="even">
+<td>Profile location</td>
+<td><code>.claude/rules/</code></td>
+<td><code>.claude/references/</code> (on-demand)</td>
+</tr>
+<tr class="odd">
+<td>Folder structure</td>
+<td><code>Paper/</code>, <code>Figures/</code>, <code>Tables/</code>, <code>Talks/</code></td>
+<td><code>paper/</code> (self-contained)</td>
+</tr>
+<tr class="even">
+<td>Presentations</td>
+<td>Beamer only</td>
+<td>Beamer + Quarto RevealJS</td>
+</tr>
+<tr class="odd">
+<td>Memory</td>
+<td><code>[LEARN]</code> tags</td>
+<td>Auto-memory (built-in)</td>
+</tr>
+<tr class="even">
+<td>Context overhead</td>
+<td>~3,500 lines/session</td>
+<td>~1,000 lines/session</td>
+</tr>
+<tr class="odd">
+<td>Agent prompts</td>
+<td>Economics-specific</td>
+<td>Field-neutral (read from domain profile)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key principle:</strong> The upgrade adapts to your project. It never renames folders with content or overwrites filled-in profiles.</p>
+<hr>
 </section>
 <section id="sec-create-skills" class="level2">
 <h2 class="anchored" data-anchor-id="sec-create-skills">Creating Custom Skills</h2>
