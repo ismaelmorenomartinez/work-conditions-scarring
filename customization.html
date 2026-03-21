@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Customization Guide – The Clo-Author</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-be788d54854417ccf85972ce5a1e216a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-2ed217316077e1b63917f5fed0b8555e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<meta name="mermaid-theme" content="dark">
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">The Clo-Author</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Quick Start</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./user-guide.html"> 
+<span class="menu-text">User Guide</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./agents.html"> 
+<span class="menu-text">Agents</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./architecture.html"> 
+<span class="menu-text">Architecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./customization.html" aria-current="page"> 
+<span class="menu-text">Customization</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./reference.html"> 
+<span class="menu-text">Reference</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/hugosantanna/clo-author"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#claude.md-the-project-constitution" id="toc-claude.md-the-project-constitution" class="nav-link" data-scroll-target="#claude.md-the-project-constitution">CLAUDE.md — The Project Constitution</a></li>
+  <li><a href="#rules-auto-loading-domain-knowledge" id="toc-rules-auto-loading-domain-knowledge" class="nav-link" data-scroll-target="#rules-auto-loading-domain-knowledge">Rules — Auto-Loading Domain Knowledge</a></li>
+  <li><a href="#domain-profile" id="toc-domain-profile" class="nav-link" data-scroll-target="#domain-profile">Domain Profile</a>
+  <ul class="collapse">
+  <li><a href="#journal-profiles" id="toc-journal-profiles" class="nav-link" data-scroll-target="#journal-profiles">Journal Profiles</a></li>
+  </ul></li>
+  <li><a href="#skills-10-core-commands" id="toc-skills-10-core-commands" class="nav-link" data-scroll-target="#skills-10-core-commands">Skills — Available Commands</a></li>
+  <li><a href="#hooks-smart-defaults" id="toc-hooks-smart-defaults" class="nav-link" data-scroll-target="#hooks-smart-defaults">Hooks — Smart Defaults</a>
+  <ul class="collapse">
+  <li><a href="#design-principles" id="toc-design-principles" class="nav-link" data-scroll-target="#design-principles">Design Principles</a></li>
+  <li><a href="#all-4-hooks" id="toc-all-4-hooks" class="nav-link" data-scroll-target="#all-4-hooks">All 4 Hooks</a></li>
+  </ul></li>
+  <li><a href="#memory-system" id="toc-memory-system" class="nav-link" data-scroll-target="#memory-system">Memory System</a></li>
+  <li><a href="#context-survival-system" id="toc-context-survival-system" class="nav-link" data-scroll-target="#context-survival-system">Context Survival System</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Customization Guide</h1>
+<p class="subtitle lead">Make the Clo-Author Yours</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p>The Clo-Author works out of the box, but it’s designed to be customized. Six configuration layers control how Claude behaves in your project — from the high-level project constitution to low-level event hooks.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 33%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>Location</th>
+<th>Loaded When</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CLAUDE.md</strong></td>
+<td>Project root</td>
+<td>Every session</td>
+</tr>
+<tr class="even">
+<td><strong>Rules</strong></td>
+<td><code>.claude/rules/</code></td>
+<td>Always-on or path-scoped</td>
+</tr>
+<tr class="odd">
+<td><strong>References</strong></td>
+<td><code>.claude/references/</code></td>
+<td>On demand (agents read when needed)</td>
+</tr>
+<tr class="even">
+<td><strong>Skills</strong></td>
+<td><code>.claude/skills/</code></td>
+<td>On demand (slash commands)</td>
+</tr>
+<tr class="odd">
+<td><strong>Agents</strong></td>
+<td><code>.claude/agents/</code></td>
+<td>On demand (via skills or orchestrator)</td>
+</tr>
+<tr class="even">
+<td><strong>Hooks</strong></td>
+<td><code>.claude/settings.json</code></td>
+<td>On events (automatic)</td>
+</tr>
+</tbody>
+</table>
+<p>Claude reliably follows about <strong>100–150 custom instructions</strong>. Your system prompt uses ~50, leaving ~100 for your project. CLAUDE.md and always-on rules share this budget. Path-scoped rules, references, skills, and agents load on demand — they don’t count against the limit.</p>
+<hr>
+</section>
+<section id="claude.md-the-project-constitution" class="level1">
+<h1>CLAUDE.md — The Project Constitution</h1>
+<p><code>CLAUDE.md</code> is the single most important file. Claude reads it at the start of every session. It should be a <strong>slim constitution</strong> — short directives and pointers, not comprehensive documentation. Aim for ~120 lines:</p>
+<ul>
+<li><strong>Core principles</strong> — 5–6 bullets (plan-first, verify-after, quality gates, worker-critic pairs, LEARN tags)</li>
+<li><strong>Folder structure</strong> — where everything lives</li>
+<li><strong>Commands</strong> — compilation, deployment</li>
+<li><strong>Skill quick reference</strong> — table of 10 available commands</li>
+<li><strong>Customization tables</strong> — Beamer environments, notation</li>
+<li><strong>Current state</strong> — what’s done, what’s in progress</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Keep It Lean
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If CLAUDE.md exceeds ~150 lines, Claude starts ignoring rules silently. Put detailed standards in path-scoped rules instead.</p>
+</div>
+</div>
+<hr>
+</section>
+<section id="rules-auto-loading-domain-knowledge" class="level1">
+<h1>Rules — Auto-Loading Domain Knowledge</h1>
+<p>Rules are markdown files in <code>.claude/rules/</code> that Claude loads automatically. Consolidated into <strong>11 focused files</strong> for clarity.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Rule</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>workflow.md</code></td>
+<td>Plan-first protocol, orchestrator loop, dependency graph, standalone access</td>
+</tr>
+<tr class="even">
+<td><code>quality.md</code></td>
+<td>Weighted scoring formula, severity gradient by phase, quality gates</td>
+</tr>
+<tr class="odd">
+<td><code>agents.md</code></td>
+<td>Worker-critic pairs, separation of powers, three-strikes escalation</td>
+</tr>
+<tr class="even">
+<td><code>logging.md</code></td>
+<td>Session logging, session reporting, research journal</td>
+</tr>
+<tr class="odd">
+<td><code>content-standards.md</code></td>
+<td>Table generation, PDF processing, exploration workflow</td>
+</tr>
+<tr class="even">
+<td><code>figures.md</code></td>
+<td>No embedded titles, serif fonts, publication-quality axis labels, full year axes</td>
+</tr>
+<tr class="odd">
+<td><code>tables.md</code></td>
+<td>No embedded titles, booktabs, threeparttable, notes in paper not R output</td>
+</tr>
+<tr class="even">
+<td><code>working-paper-format.md</code></td>
+<td>Working paper layout: 12pt, 1in margins, titling fonts, abstract format</td>
+</tr>
+<tr class="odd">
+<td><code>revision.md</code></td>
+<td>R&amp;R cycle comment classification and routing</td>
+</tr>
+<tr class="even">
+<td><code>meta-governance.md</code></td>
+<td>Template vs working project distinction</td>
+</tr>
+<tr class="odd">
+<td><code>domain-profile.md</code></td>
+<td>Field-specific calibration (moved to <code>.claude/references/</code> in v3.0)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="domain-profile" class="level1">
+<h1>Domain Profile</h1>
+<p>The domain profile (<code>.claude/references/domain-profile.md</code>) calibrates all agents to your specific research field. Agents read their discipline from this file; the default is economics if not specified. It supports any empirical social science: economics, finance, marketing, management, accounting, and public policy. It can be populated two ways:</p>
+<ol type="1">
+<li><strong><code>/discover</code></strong> (interactive interview) — generates it automatically</li>
+<li><strong>Manual editing</strong> — fill in the template directly</li>
+</ol>
+<p>All agents read this file for:</p>
+<ul>
+<li>Target journal tiers (for Orchestrator, Editor, and referees)</li>
+<li>Common data sources (for Explorer)</li>
+<li>Identification strategies (for Strategist and strategist-critic)</li>
+<li>Field conventions (for Coder and Writer)</li>
+<li>Seminal references (for Librarian)</li>
+<li>Referee concerns (for domain-referee and methods-referee)</li>
+</ul>
+<section id="journal-profiles" class="level2">
+<h2 class="anchored" data-anchor-id="journal-profiles">Journal Profiles</h2>
+<p>The journal profiles (<code>.claude/references/journal-profiles.md</code>) calibrate the <strong>Editor</strong>, <strong>domain-referee</strong>, and <strong>methods-referee</strong> to a specific journal’s review culture when you run <code>/review --peer [journal]</code>.</p>
+<p>30 journals are pre-populated across multiple fields:</p>
+<ul>
+<li><strong>Economics:</strong> AER, Econometrica, JPE, QJE, REStud, AEJ:Applied, AEJ:Policy, JHR, JHE, RAND, JPubE, JLE, JDE, RESTAT, AER:Insights</li>
+<li><strong>Finance:</strong> JF, JFE, RFS, JFQA</li>
+<li><strong>Accounting:</strong> JAR, JAE, TAR, CAR</li>
+<li><strong>Marketing:</strong> JMR, Marketing Science, JCR</li>
+<li><strong>Management:</strong> Management Science, SMJ, ASQ</li>
+</ul>
+<p>Each profile describes the journal’s bar, what its referees prioritize, and typical concerns — in plain language that the LLM interprets naturally.</p>
+<p>For journals not in the list, referees still adapt using the journal name + your domain profile. You can add your own profiles using the template at the bottom of the file.</p>
+<hr>
+</section>
+</section>
+<section id="skills-10-core-commands" class="level1">
+<h1>Skills — Available Commands</h1>
+<p>Skills are multi-step workflows invoked with <code>/command</code>. Each skill lives in <code>.claude/skills/[name]/SKILL.md</code> and dispatches the appropriate agents.</p>
+<p>There are <strong>10 skills</strong> covering the full research pipeline: <code>/new-project</code>, <code>/discover</code>, <code>/strategize</code>, <code>/analyze</code>, <code>/write</code>, <code>/review</code>, <code>/revise</code>, <code>/talk</code>, <code>/submit</code>, and <code>/tools</code>.</p>
+<p>Skills can be invoked two ways: <strong>explicitly</strong> (you type <code>/review Paper/main.tex</code>) or <strong>automatically</strong> (Claude invokes them when relevant). Most of the time, you just describe what you want.</p>
+<p>See the <a href="./reference.html">Command Reference</a> for every command, flag, and subcommand. See the <a href="./user-guide.html">User Guide</a> for detailed workflow descriptions.</p>
+<hr>
+</section>
+<section id="hooks-smart-defaults" class="level1">
+<h1>Hooks — Smart Defaults</h1>
+<p>Hooks live in <code>.claude/settings.json</code> and fire on events, regardless of context state. Reduced to <strong>4 essential hooks</strong> that stay out of the way.</p>
+<section id="design-principles" class="level2">
+<h2 class="anchored" data-anchor-id="design-principles">Design Principles</h2>
+<ul>
+<li>Use <strong>command-based hooks</strong> for fast, mechanical checks</li>
+<li>Use <strong>rules</strong> for nuanced judgment</li>
+<li>Avoid prompt-based hooks that trigger LLM calls on every response</li>
+</ul>
+</section>
+<section id="all-4-hooks" class="level2">
+<h2 class="anchored" data-anchor-id="all-4-hooks">All 4 Hooks</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 26%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hook</th>
+<th>Event</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>File protection</td>
+<td><code>PreToolUse</code></td>
+<td>Blocks edits to bibliography and settings</td>
+</tr>
+<tr class="even">
+<td>Context state capture</td>
+<td><code>PreCompact</code></td>
+<td>Saves plan state + context survival checklist</td>
+</tr>
+<tr class="odd">
+<td>Context restoration</td>
+<td><code>SessionStart[compact\|resume]</code></td>
+<td>Restores context after compaction</td>
+</tr>
+<tr class="even">
+<td>Post-merge reminder</td>
+<td>Git post-merge</td>
+<td>Reminds to run <code>/tools learn</code> after merges</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="memory-system" class="level1">
+<h1>Memory System</h1>
+<p>Four persistent layers plus ephemeral conversation:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 38%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>File</th>
+<th>Updated When</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Project context</td>
+<td><code>CLAUDE.md</code></td>
+<td>Rarely</td>
+<td>Project rules, folder structure</td>
+</tr>
+<tr class="even">
+<td>Corrections</td>
+<td><code>MEMORY.md</code></td>
+<td>On <code>[LEARN]</code> tag</td>
+<td>Prevent repeating mistakes</td>
+</tr>
+<tr class="odd">
+<td>Task strategy</td>
+<td><code>quality_reports/plans/</code></td>
+<td>Once per task</td>
+<td>Plan survives handoff</td>
+</tr>
+<tr class="even">
+<td>Decision reasoning</td>
+<td><code>quality_reports/session_logs/</code></td>
+<td>Incrementally</td>
+<td>Record <em>why</em> decisions were made</td>
+</tr>
+<tr class="odd">
+<td>Conversation</td>
+<td>Context window</td>
+<td>Every response</td>
+<td>Current working memory (<strong>not</strong> persistent)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="context-survival-system" class="level1">
+<h1>Context Survival System</h1>
+<p>When context compaction happens, two hooks preserve and restore state:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor': '#14142a', 'primaryTextColor': '#d0d0e0', 'primaryBorderColor': '#b44dff', 'lineColor': '#b44dff', 'secondaryColor': '#0c0c18', 'tertiaryColor': '#080810', 'edgeLabelBackground': '#080810'}}}%%
+flowchart TD
+    RUN[Session running]:::step --&gt;|context fills up| PRE[PreCompact fires]:::hook
+    PRE --&gt; SAVE[Saves plan, task, decisions]:::step
+    SAVE --&gt; COMPACT[Auto-compaction happens]:::event
+    COMPACT --&gt; POST[SessionStart fires]:::hook
+    POST --&gt; RESTORE[Restores context summary]:::step
+    RESTORE --&gt; RESUME[Claude knows where it left off]:::approved
+
+    classDef step fill:#14142a,stroke:#b44dff,color:#b44dff,stroke-width:2px
+    classDef hook fill:#14142a,stroke:#00f0ff,color:#00f0ff,stroke-width:2px
+    classDef event fill:#14142a,stroke:#ff2d7b,color:#ff2d7b,stroke-width:2px
+    classDef approved fill:#14142a,stroke:#00cc66,color:#00cc66,stroke-width:2px
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/hugosantanna\.github\.io\/clo-author\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
