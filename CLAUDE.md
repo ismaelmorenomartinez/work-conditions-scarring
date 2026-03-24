@@ -64,7 +64,7 @@
 
 ```bash
 # Paper compilation (3-pass, XeLaTeX only)
-cd Paper && TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
+cd paper && TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
 BIBINPUTS=..:$BIBINPUTS bibtex main
 TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
 TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
@@ -122,5 +122,5 @@ See `quality.md` for weighted aggregation formula.
 |-----------|------|--------|-------------|
 | Paper | `paper/main.tex` | [draft/submitted/R&R] | [Brief description] |
 | Data | `scripts/R/` | [complete/in-progress] | [Analysis description] |
-| Replication | `Replication/` | [not started/ready] | [Deposit status] |
-| Job Market Talk | `Talks/job_market_talk.tex` | -- | [Status] |
+| Replication | `paper/replication/` | [not started/ready] | [Deposit status] |
+| Job Market Talk | `paper/talks/job_market_talk.tex` | -- | [Status] |

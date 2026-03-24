@@ -25,7 +25,7 @@ Checks 1–10. Full AEA Data Editor compliance audit before journal submission.
 
 ### 1. LaTeX Compilation
 ```bash
-cd Paper && TEXINPUTS=../Preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex 2>&1 | tail -20
+cd paper && TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex 2>&1 | tail -20
 ```
 - Check exit code (0 = success)
 - Count `Overfull \\hbox` warnings
@@ -43,8 +43,8 @@ Rscript scripts/R/FILENAME.R 2>&1 | tail -20
 
 ### 3. File Integrity
 - Every `\input{}`, `\include{}` reference resolves to an existing file
-- Every referenced table in `Tables/` exists
-- Every referenced figure in `Figures/` exists
+- Every referenced table in `paper/tables/` exists
+- Every referenced figure in `paper/figures/` exists
 
 ### 4. Output Freshness
 - Timestamps of output files match latest script run

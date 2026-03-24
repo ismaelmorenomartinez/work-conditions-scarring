@@ -55,8 +55,8 @@ Based on venue or user request.
   ```
 - Use markdown syntax, not LaTeX
 - Math: `$...$` and `$$...$$` (same as LaTeX)
-- Figures: `![](../Figures/file.pdf){width="80%"}`
-- Tables: markdown tables or `{{< include ../Tables/file.tex >}}`
+- Figures: `![](../figures/file.pdf){width="80%"}`
+- Tables: markdown tables or `{{< include ../tables/file.tex >}}`
 - Speaker notes with `::: {.notes}` blocks
 - Fragments with `. . .` for progressive reveal (Quarto equivalent of `\pause`)
 

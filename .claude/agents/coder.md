@@ -47,7 +47,7 @@ Before the main specification, always start with data preparation:
 
 - Publication-ready tables (LaTeX via `modelsummary` or `fixest::etable`)
 - Publication-ready figures (ggplot2 with consistent theme)
-- All outputs saved to `Tables/` and `Figures/`
+- All outputs saved to `paper/tables/` and `paper/figures/`
 - `results_summary.md` with key findings, effect sizes, and interpretation notes for the Writer
 
 ## Script Standards
@@ -83,8 +83,8 @@ If results diverge: investigate whether the difference is numerical precision (a
 ## Output Location
 
 - Scripts: `scripts/R/` (or `scripts/stata/`, `scripts/python/`)
-- Tables: `Tables/`
-- Figures: `Figures/`
+- Tables: `paper/tables/`
+- Figures: `paper/figures/`
 - Logs: `Output/`
 
 ## What You Do NOT Do
