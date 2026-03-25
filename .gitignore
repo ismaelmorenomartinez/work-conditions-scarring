@@ -54,3 +54,25 @@ Thumbs.db
 # *.rds
 # output/**/*.rds
 docs/
+
+# Raw data (too large for git; stored on OneDrive)
+data/raw/ewcs/
+data/raw/ameco0/
+data/raw/ilo_unemployment/
+data/raw/arbeitslose-quoten-dlk-0-zip/
+data/raw/unemployment/ameco/
+data/raw/unemployment/ilo/
+data/raw/unemployment/germany_ba/
+data/raw/unemployment/eurostat/
+data/raw/unemployment/worldbank/
+data/raw/alo-zeitreihe-dwo-b-0-xlsx.xlsx
+data/raw/ameco_unemployment_rates.csv
+data/raw/eurostat_unemployment_rates.csv
+data/raw/eurostat_youth_unemployment_rates.csv
+data/raw/worldbank_unemployment_rates.csv
+
+# Keep processed unemployment outputs in git (small CSVs)
+!data/raw/unemployment/processed/
+
+# Supporting papers (copyrighted)
+master_supporting_docs/supporting_papers/

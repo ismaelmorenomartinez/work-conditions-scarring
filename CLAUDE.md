@@ -5,9 +5,9 @@
      Keep this file under ~150 lines — Claude loads it every session.
      See the guide at https://hugosantanna.github.io/clo-author/ for full documentation. -->
 
-**Project:** [YOUR PROJECT NAME]
-**Institution:** [YOUR INSTITUTION]
-**Field:** [YOUR FIELD — e.g., Economics, Finance, Marketing, Management, Accounting]
+**Project:** Labor Market Entry Conditions and Working Conditions Scarring
+**Institution:** European University Institute
+**Field:** Labor Economics
 **Branch:** main
 
 ---
@@ -130,7 +130,7 @@ Output organization: by-script
 
 | Component | File | Status | Description |
 |-----------|------|--------|-------------|
-| Paper | `paper/main.tex` | [draft/submitted/R&R] | [Brief description] |
-| Data | `scripts/R/` | [complete/in-progress] | [Analysis description] |
-| Replication | `paper/replication/` | [not started/ready] | [Deposit status] |
-| Job Market Talk | `paper/talks/job_market_talk.tex` | -- | [Status] |
+| Paper | `paper/main.tex` | not started | Entry conditions scarring on working conditions (EWCS) |
+| Data | `data/raw/` | not started | European Working Conditions Survey (EWCS) |
+| Replication | `paper/replication/` | not started | -- |
+| Job Market Talk | `paper/talks/job_market_talk.tex` | -- | -- |
