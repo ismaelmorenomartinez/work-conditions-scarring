@@ -134,15 +134,17 @@ ur_combined |>
 
 
 # === 3. BUILD LONG AND WIDE PANELS ============================================
-# Long panel: 12 countries, data from 1970 onward
-# Wide panel: 27 countries, data from 1990 onward
+# Long panel: 14 countries, data from 1970 onward
+#   - AT, FI, SE added (AMECO UR from 1960, EWCS from W2)
+#   - LU excluded (most workforce is foreign → large UR measurement error)
+# Wide panel: 27 countries, data from 1990 onward (includes LU)
 # Time windows chosen so coverage is near-consistent across countries in each panel.
 # Standardization (mean, SD) is computed only over these windows.
 
-long_countries <- c("BE", "DE", "DK", "EL", "ES", "FR", "IE", "IT", "LU", "NL", "PT", "UK")
-wide_countries <- c(long_countries,
-                    "AT", "BG", "CY", "CZ", "EE", "FI", "HU", "LT", "LV",
-                    "MT", "PL", "RO", "SE", "SI", "SK")
+long_countries <- c("AT", "BE", "DE", "DK", "EL", "ES", "FI", "FR", "IE", "IT", "NL", "PT", "SE", "UK")
+wide_countries <- c(long_countries, "LU",
+                    "BG", "CY", "CZ", "EE", "HU", "LT", "LV",
+                    "MT", "PL", "RO", "SI", "SK")
 
 long_start <- 1970
 wide_start <- 1990
@@ -150,10 +152,21 @@ wide_start <- 1990
 ur_long <- ur_combined |> filter(country %in% long_countries, year >= long_start)
 ur_wide <- ur_combined |> filter(country %in% wide_countries, year >= wide_start)
 
+# Full panel: union of long and wide. For long-panel countries use data from 1970;
+# for wide-only countries use data from 1990.
+full_countries <- wide_countries
+wide_only_countries <- setdiff(wide_countries, long_countries)
+ur_full <- bind_rows(
+  ur_combined |> filter(country %in% long_countries, year >= long_start),
+  ur_combined |> filter(country %in% wide_only_countries, year >= wide_start)
+)
+
 cat("\nLong panel:", length(unique(ur_long$country)), "countries,",
     nrow(ur_long), "obs, years", long_start, "-", max(ur_long$year), "\n")
 cat("Wide panel:", length(unique(ur_wide$country)), "countries,",
     nrow(ur_wide), "obs, years", wide_start, "-", max(ur_wide$year), "\n")
+cat("Full panel:", length(unique(ur_full$country)), "countries,",
+    nrow(ur_full), "obs\n")
 
 
 # === 4. STANDARDIZE SEPARATELY PER PANEL ======================================
@@ -171,8 +184,27 @@ standardize_panel <- function(df, panel_name) {
     mutate(panel = panel_name)
 }
 
+# Full panel: standardize using 1990+ period mean/SD, but apply to all years
+standardize_full_panel <- function(df) {
+  # Compute mean and SD using only 1990+ observations
+  stats_1990 <- df |>
+    filter(year >= 1990) |>
+    group_by(country) |>
+    summarise(ur_mean = mean(ur_raw, na.rm = TRUE),
+              ur_sd = sd(ur_raw, na.rm = TRUE),
+              .groups = "drop")
+
+  # Apply these statistics to ALL years (including pre-1990)
+  df |>
+    left_join(stats_1990, by = "country") |>
+    mutate(ur_std = (ur_raw - ur_mean) / ur_sd) |>
+    select(country, year, ur_raw, ur_std, source) |>
+    mutate(panel = "full")
+}
+
 panel_long <- standardize_panel(ur_long, "long")
 panel_wide <- standardize_panel(ur_wide, "wide")
+panel_full <- standardize_full_panel(ur_full)
 
 # Verify standardization
 cat("\n=== Standardization check (Long panel) ===\n")
@@ -187,29 +219,50 @@ panel_wide |>
   summarise(mean_std = round(mean(ur_std), 4), sd_std = round(sd(ur_std), 4)) |>
   print(n = 30)
 
+cat("\n=== Standardization check (Full panel — note: mean/SD computed on 1990+ only) ===\n")
+panel_full |>
+  group_by(country) |>
+  summarise(mean_std = round(mean(ur_std), 4), sd_std = round(sd(ur_std), 4),
+            min_year = min(year), max_year = max(year)) |>
+  print(n = 30)
 
-# === 5. COMPUTE ENTRY CONDITIONS (avg UR at ages 18-25) =======================
 
-compute_entry_conditions <- function(panel_df) {
-  # For each country, determine the range of birth cohorts we can compute
-  # A cohort born in year y needs UR data for years y+18 through y+25
+# === 5. COMPUTE ENTRY CONDITIONS ==============================================
+
+compute_entry_conditions <- function(panel_df, age_min = 18, age_max = 25) {
+  n_ages <- age_max - age_min + 1
+  var_name <- paste0("avg_ur_std_", age_min, "_", age_max)
   panel_df |>
     select(country, year, ur_std) |>
-    # Create all cohort-age combinations
-    crossing(age = 18:25) |>
+    crossing(age = age_min:age_max) |>
     mutate(birth_year = year - age) |>
-    # For each cohort-country, check we have all 8 ages
     group_by(country, birth_year) |>
-    filter(n() == 8) |>
+    filter(n() == n_ages) |>
     summarise(
-      avg_ur_std_18_25 = mean(ur_std, na.rm = TRUE),
+      avg_ur_std = mean(ur_std, na.rm = TRUE),
       .groups = "drop"
     ) |>
+    rename(!!var_name := avg_ur_std) |>
     arrange(country, birth_year)
 }
 
-entry_long <- compute_entry_conditions(panel_long)
-entry_wide <- compute_entry_conditions(panel_wide)
+# Ages 18-25 (original, following Schwandt & von Wachter)
+entry_long_18_25 <- compute_entry_conditions(panel_long, 18, 25)
+entry_wide_18_25 <- compute_entry_conditions(panel_wide, 18, 25)
+entry_full_18_25 <- compute_entry_conditions(panel_full, 18, 25)
+
+# Ages 18-24 (tighter treatment window)
+entry_long_18_24 <- compute_entry_conditions(panel_long, 18, 24)
+entry_wide_18_24 <- compute_entry_conditions(panel_wide, 18, 24)
+entry_full_18_24 <- compute_entry_conditions(panel_full, 18, 24)
+
+# Merge both variants per panel
+entry_long <- entry_long_18_25 |>
+  left_join(entry_long_18_24, by = c("country", "birth_year"))
+entry_wide <- entry_wide_18_25 |>
+  left_join(entry_wide_18_24, by = c("country", "birth_year"))
+entry_full <- entry_full_18_25 |>
+  left_join(entry_full_18_24, by = c("country", "birth_year"))
 
 cat("\n=== Entry conditions (Long panel) ===\n")
 entry_long |>
@@ -223,16 +276,22 @@ entry_wide |>
   summarise(cohort_from = min(birth_year), cohort_to = max(birth_year), n = n()) |>
   print(n = 30)
 
+cat("\n=== Entry conditions (Full panel) ===\n")
+entry_full |>
+  group_by(country) |>
+  summarise(cohort_from = min(birth_year), cohort_to = max(birth_year), n = n()) |>
+  print(n = 30)
+
 
 # === 6. SAVE ==================================================================
 
 write_csv(panel_long |> select(-panel), file.path(out_dir, "ur_panel_long.csv"))
 write_csv(panel_wide |> select(-panel), file.path(out_dir, "ur_panel_wide.csv"))
+write_csv(panel_full |> select(-panel), file.path(out_dir, "ur_panel_full.csv"))
 write_csv(entry_long, file.path(out_dir, "entry_conditions_long.csv"))
 write_csv(entry_wide, file.path(out_dir, "entry_conditions_wide.csv"))
+write_csv(entry_full, file.path(out_dir, "entry_conditions_full.csv"))
 
 cat("\n=== Saved to", out_dir, "===\n")
-cat("  ur_panel_long.csv\n")
-cat("  ur_panel_wide.csv\n")
-cat("  entry_conditions_long.csv\n")
-cat("  entry_conditions_wide.csv\n")
+cat("  ur_panel_long.csv / ur_panel_wide.csv / ur_panel_full.csv\n")
+cat("  entry_conditions_long.csv / entry_conditions_wide.csv / entry_conditions_full.csv\n")

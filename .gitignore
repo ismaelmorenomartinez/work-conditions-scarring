@@ -74,5 +74,12 @@ data/raw/worldbank_unemployment_rates.csv
 # Keep processed unemployment outputs in git (small CSVs)
 !data/raw/unemployment/processed/
 
+# Large model objects (regenerate from scripts)
+scripts/R/output/**/models_*.rds
+
+# Large cleaned data (regenerate from 05_clean_ewcs.R)
+data/cleaned/ewcs_analysis.csv
+
 # Supporting papers (copyrighted)
 master_supporting_docs/supporting_papers/
+master_supporting_docs/*.xlsx
