@@ -8,7 +8,7 @@
 library(tidyverse)
 
 # --- Paths -------------------------------------------------------------------
-ewcs_dir  <- "data/raw/ewcs/7363tab_shorter2_V1/UKDA-7363-tab/tab"
+ewcs_dir  <- "data/raw/ewcs/trend_1991_2024/UKDA-7363-tab/tab"
 fig_dir   <- "paper/figures/03_citizenship_diagnostics"
 tab_dir   <- "paper/tables/03_citizenship_diagnostics"
 dir.create(fig_dir, showWarnings = FALSE, recursive = TRUE)

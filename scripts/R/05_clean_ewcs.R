@@ -7,7 +7,7 @@
 library(tidyverse)
 
 # --- Paths -------------------------------------------------------------------
-ewcs_dir   <- "data/raw/ewcs/7363tab_shorter2_V1/UKDA-7363-tab/tab"
+ewcs_dir   <- "data/raw/ewcs/trend_1991_2024/UKDA-7363-tab/tab"
 ur_dir     <- "data/raw/unemployment/processed"
 out_dir    <- "data/cleaned"
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
