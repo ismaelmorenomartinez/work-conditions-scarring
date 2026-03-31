@@ -1,0 +1,322 @@
+================================================================
+  ISCED Education Level: Descriptives by Wave
+================================================================
+
+================================================================
+  W1 (1991), W2 (1995), W3 (2000), W3cc (2001)
+================================================================
+
+The 'isced' column exists at position 272 in all four standalone files,
+but is completely empty (0 non-blank values). No ISCED data available
+for these waves. The 'ef1' column (highest education level) is also empty.
+
+Note: Variables ef12r, ef13br, ef13r in W3, and y01_ef12br in the 91-15
+trend file, are HOUSEHOLD COMPOSITION variables (paid jobs, children
+under 15), NOT education — verified via codebooks.
+
+
+--- W4 (2005) — isced [ISCED 1997] ---
+Source: Standalone (ewcs2005.tab) | Variable: isced
+Coding: 0=pre-primary, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=tertiary first, 6=tertiary advanced; 99=refusal, 999=missing
+Total observations: 29,680
+Valid observations: 29,591 (99.7%)
+
+Frequency distribution:
+  0         :    266 (  0.9%)
+  1         :  2,141 (  7.2%)
+  2         :  4,127 ( 13.9%)
+  3         : 12,336 ( 41.7%)
+  4         :  3,196 ( 10.8%)
+  5         :  6,828 ( 23.1%)
+  6         :    697 (  2.4%)
+
+
+--- W5 (2010) — ef1_isce [ISCED 1997] ---
+Source: Standalone (ewcs2010.tab) | Variable: ef1_isce
+Coding: 0=pre-primary, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=tertiary first, 6=tertiary advanced; 9=refusal
+Total observations: 43,816
+Valid observations: 43,695 (99.7%)
+
+Frequency distribution:
+  0         :    239 (  0.5%)
+  1         :  2,505 (  5.7%)
+  2         :  8,402 ( 19.2%)
+  3         : 17,790 ( 40.7%)
+  4         :  1,890 (  4.3%)
+  5         : 12,461 ( 28.5%)
+  6         :    408 (  0.9%)
+
+
+================================================================
+  y15_ISCED_lt: Eurofound harmonized ISCED across W4-W6 (91-15 trend)
+================================================================
+
+--- W4 (2005) — y15_ISCED_lt [harmonized ISCED 1997] ---
+Source: 91-15 trend (filtered) | Variable: y15_ISCED_lt
+Coding: 0=pre-primary, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=tertiary first, 6=tertiary advanced; 9=DK/refusal; 88=DK
+Total observations: 29,680
+Valid observations: 29,591 (99.7%)
+
+Frequency distribution:
+  0         :    266 (  0.9%)
+  1         :  2,141 (  7.2%)
+  2         :  4,127 ( 13.9%)
+  3         : 12,336 ( 41.7%)
+  4         :  3,196 ( 10.8%)
+  5         :  6,828 ( 23.1%)
+  6         :    697 (  2.4%)
+
+
+--- W5 (2010) — y15_ISCED_lt [harmonized ISCED 1997] ---
+Source: 91-15 trend (filtered) | Variable: y15_ISCED_lt
+Coding: 0=pre-primary, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=tertiary first, 6=tertiary advanced; 9=DK/refusal; 88=DK
+Total observations: 43,816
+Valid observations: 41,565 (94.9%)
+
+Frequency distribution:
+  0         :    239 (  0.6%)
+  1         :  2,481 (  6.0%)
+  2         :  7,017 ( 16.9%)
+  3         : 17,572 ( 42.3%)
+  4         :  1,890 (  4.5%)
+  5         : 11,975 ( 28.8%)
+  6         :    391 (  0.9%)
+
+
+--- W6 (2015) — y15_ISCED_lt [harmonized ISCED 1997] ---
+Source: 91-15 trend (filtered) | Variable: y15_ISCED_lt
+Coding: 0=pre-primary, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=tertiary first, 6=tertiary advanced; 9=DK/refusal; 88=DK
+Total observations: 43,850
+Valid observations: 43,689 (99.6%)
+
+Frequency distribution:
+  0         :    257 (  0.6%)
+  1         :  2,078 (  4.8%)
+  2         :  5,843 ( 13.4%)
+  3         : 18,153 ( 41.6%)
+  4         :  3,067 (  7.0%)
+  5         : 13,877 ( 31.8%)
+  6         :    414 (  0.9%)
+
+
+--- W6 (2015) — isced [ISCED 2011, from 91-24 trend] ---
+Source: 91-24 trend (filtered wave=6) | Variable: isced
+Coding: 0=early childhood, 1=primary, 2=lower sec, 3=upper sec, 4=post-sec non-tertiary, 5=short-cycle tertiary, 6=bachelor, 7=master, 8=doctoral; -998=refused, -999=DK
+Total observations: 43,850
+Valid observations: 43,689 (99.6%)
+
+Frequency distribution:
+  0         :    257 (  0.6%)
+  1         :  2,078 (  4.8%)
+  2         :  5,843 ( 13.4%)
+  3         : 18,153 ( 41.6%)
+  4         :  3,067 (  7.0%)
+  5         :  4,115 (  9.4%)
+  6         :  5,702 ( 13.1%)
+  7         :  4,060 (  9.3%)
+  8         :    414 (  0.9%)
+
+
+--- W6 (2015) — edu3 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=6) | Variable: edu3
+Total observations: 43,850
+Valid observations: 43,689 (99.6%)
+
+Frequency distribution:
+  0-2 low   :  8,178 ( 18.7%)
+  3-4 mid   : 21,220 ( 48.6%)
+  5+ high   : 14,291 ( 32.7%)
+
+
+--- W6 (2015) — edu4 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=6) | Variable: edu4
+Total observations: 43,850
+Valid observations: 43,689 (99.6%)
+
+Frequency distribution:
+  0-2 low   :  8,178 ( 18.7%)
+  3-4 mid   : 21,220 ( 48.6%)
+  5-6 grad  :  9,817 ( 22.5%)
+  7+ post-grad:  4,474 ( 10.2%)
+
+
+--- W6 (2015) — edu5 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=6) | Variable: edu5
+Total observations: 43,850
+Valid observations: 43,689 (99.6%)
+
+Frequency distribution:
+  0-2 primary:  8,178 ( 18.7%)
+  3 secondary: 18,153 ( 41.6%)
+  4-5 tertiary:  7,182 ( 16.4%)
+  6 bachelor:  5,702 ( 13.1%)
+  7+ post-grad:  4,474 ( 10.2%)
+
+
+--- W7 (EWCTS 2021) ---
+Not included in either trend file (91-15 or 91-24).
+Available only in Stata format at data/raw/ewcs/w7_ewcts_2021/.
+Excluded from this exploration.
+
+
+--- W8 (2024) — isced [ISCED 2011, from 91-24 trend] ---
+Source: 91-24 trend (filtered wave=8) | Variable: isced
+Coding: Same ISCED 2011 coding as W6
+Total observations: 36,644
+Valid observations: 36,556 (99.8%)
+
+Frequency distribution:
+  0         :     89 (  0.2%)
+  1         :    827 (  2.3%)
+  2         :  3,705 ( 10.1%)
+  3         : 14,837 ( 40.6%)
+  4         :  3,028 (  8.3%)
+  5         :  2,674 (  7.3%)
+  6         :  5,141 ( 14.1%)
+  7         :  5,676 ( 15.5%)
+  8         :    579 (  1.6%)
+
+
+--- W8 (2024) — edu3 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=8) | Variable: edu3
+Total observations: 36,644
+Valid observations: 36,556 (99.8%)
+
+Frequency distribution:
+  0-2 low   :  4,621 ( 12.6%)
+  3-4 mid   : 17,865 ( 48.9%)
+  5+ high   : 14,070 ( 38.5%)
+
+
+--- W8 (2024) — edu4 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=8) | Variable: edu4
+Total observations: 36,644
+Valid observations: 36,556 (99.8%)
+
+Frequency distribution:
+  0-2 low   :  4,621 ( 12.6%)
+  3-4 mid   : 17,865 ( 48.9%)
+  5-6 grad  :  7,815 ( 21.4%)
+  7+ post-grad:  6,255 ( 17.1%)
+
+
+--- W8 (2024) — edu5 [broad recode, 91-24 trend] ---
+Source: 91-24 trend (filtered wave=8) | Variable: edu5
+Total observations: 36,644
+Valid observations: 36,556 (99.8%)
+
+Frequency distribution:
+  0-2 primary:  4,621 ( 12.6%)
+  3 secondary: 14,837 ( 40.6%)
+  4-5 tertiary:  5,702 ( 15.6%)
+  6 bachelor:  5,141 ( 14.1%)
+  7+ post-grad:  6,255 ( 17.1%)
+
+
+================================================================
+  ISCED AVAILABILITY IN 91-24 TREND FILE BY WAVE
+================================================================
+
+Wave       N total   N ISCED  % avail
+---------------------------------------- 
+1           12,819         0     0.0%
+2           15,986         0     0.0%
+3           32,754         0     0.0%
+4           29,676         0     0.0%
+5           43,816         0     0.0%
+6           43,850    43,689    99.6%
+8           36,644    36,556    99.8%
+
+Note: 91-24 trend only has harmonized isced for W6 and W8.
+For W4-W5, use standalone files or y15_ISCED_lt from 91-15 trend.
+
+
+================================================================
+  CROSS-WAVE SUMMARY: Best ISCED Source per Wave
+================================================================
+
+Wave          Source                  Variable         Coding     N total   N valid  % valid
+----------------------------------------------------------------------------------------------- 
+W1 (1991)     --                      --               --          12,819         0     0.0%
+W2 (1995)     --                      --               --          15,986         0     0.0%
+W3 (2000)     --                      --               --          21,703         0     0.0%
+W3cc (2001)   --                      --               --          11,051         0     0.0%
+W4 (2005)     Standalone              isced            0-6         29,680    29,591    99.7%
+W5 (2010)     Standalone              ef1_isce         0-6         43,816    43,695    99.7%
+W6 (2015)     91-24 trend             isced            0-8         43,850    43,689    99.6%
+W7 (2021)     Not available           --               --             N/A         0       --
+W8 (2024)     91-24 trend             isced            0-8         36,644    36,556    99.8%
+
+
+================================================================
+  CODING SCHEME COMPARISON
+================================================================
+
+ISCED 1997 (W4 standalone, W5 ef1_isce, y15_ISCED_lt W4-W6):
+  Code  Label
+  0     Pre-primary education
+  1     Primary education (ISCED 1)
+  2     Lower secondary education (ISCED 2)
+  3     Upper secondary education (ISCED 3)
+  4     Post-secondary non-tertiary (ISCED 4)
+  5     First stage of tertiary (ISCED 5)
+  6     Second stage of tertiary (ISCED 6)
+
+ISCED 2011 (W6/W8 via 91-24 trend):
+  Code  Label
+  0     Early childhood / less than primary
+  1     Primary education
+  2     Lower secondary education
+  3     Upper secondary education
+  4     Post-secondary non-tertiary education
+  5     Short-cycle tertiary education
+  6     Bachelor's or equivalent
+  7     Master's or equivalent
+  8     Doctoral or equivalent
+
+Crosswalk ISCED 1997 -> ISCED 2011:
+  1997 codes 0-4 -> 2011 codes 0-4 (direct mapping)
+  1997 code 5    -> 2011 codes 5 or 6 (split: short-cycle vs bachelor)
+  1997 code 6    -> 2011 codes 7 or 8 (split: master vs doctoral)
+  Implication: Harmonizing to 3 categories (low/mid/high) avoids this split.
+
+
+================================================================
+  HARMONIZATION NOTES
+================================================================
+
+1. NO ISCED FOR W1-W3/W3cc: The isced column exists in standalone files
+   but is empty. No ISCED classification was derived for these early waves.
+   The ef1 column (raw education question) is also empty in these files.
+
+2. W4-W5 (2005-2010): ISCED 1997 coding (0-6). Available from standalone
+   files and from y15_ISCED_lt in the 91-15 trend (harmonized W4-W6).
+
+3. W6-W8 (2015-2024): ISCED 2011 coding (0-8). Available from the 91-24
+   trend file. Also have pre-computed edu3/edu4/edu5 recodes.
+
+4. SIMPLEST HARMONIZATION: 3 categories (low/mid/high)
+     Low  = ISCED 0-2 (primary or less)
+     Mid  = ISCED 3-4 (secondary)
+     High = ISCED 5+  (tertiary)
+   Works for W4-W5 (ISCED 0-2/3-4/5-6) and W6-W8 (ISCED 0-2/3-4/5-8).
+   NOT available for W1-W3/W3cc.
+
+5. COMBINED EDUCATION VARIABLE COVERAGE:
+
+   Wave          educ-age (q2b/q5)    ISCED        Strategy
+   ---------------------------------------------------------------
+   W1 (1991)     YES (censored)       NO           Use q2b directly
+   W2 (1995)     YES (3-cat only)     NO           Coarse assignment
+   W3 (2000)     NO                   NO           Cannot assign
+   W3cc (2001)   YES (actual ages)    NO           Use q2b directly
+   W4 (2005)     YES (actual ages)    YES (0-6)    Both available
+   W5 (2010)     YES (actual ages)    YES (0-6)    Both available
+   W6 (2015)     NO                   YES (0-8)    ISCED + typical ages
+   W8 (2024)     NO                   YES (0-8)    ISCED + typical ages
+
+6. FOR LABOR MARKET ENTRY TIMING:
+   - Where q2b/q5 available: entry_year ~ survey_year - (age - educ_age)
+   - Where only ISCED available: need typical graduation ages by ISCED
+     level and country to approximate entry year
+   - W3 main wave: no education data at all — cannot assign entry timing

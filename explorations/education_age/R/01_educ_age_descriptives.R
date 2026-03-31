@@ -8,7 +8,8 @@
 # Sources:
 #   W1 (1991): q2b from standalone (ages 14-22, censored endpoints, 77=studying)
 #   W2 (1995): q2b from standalone (3-cat recode: 1/2/3 -> 15/18/22)
-#   W3 (2000): q2b empty in main file; y01_q2bm1 from 91-15 trend (2001 extension only)
+#   W3 (2000): q2b empty in main file
+#   W3cc (2001): q2b from standalone (actual ages, 77=studying, 88=DK, 99=refusal)
 #   W4 (2005): q2b from standalone (actual age, 77=studying, 99=refusal)
 #   W5 (2010): q5 from standalone (actual age, 77=studying, 88=DK, 99=refusal)
 #
@@ -126,26 +127,45 @@ w3 <- read_tsv("data/raw/ewcs/w3_2000/UKDA-5286-tab/tab/ewcs2000.tab",
 cat(sprintf("Total observations: %s\n", format(nrow(w3), big.mark = ",")))
 cat("q2b: EMPTY (0 non-missing values). Variable not available for main W3.\n\n")
 
-# 2001 extension from 91-15 trend file
-cat("--- W3cc (2001 candidate-country extension) — y01_q2bm1 from 91-15 trend ---\n")
-ewcs_dir <- "data/raw/ewcs/trend_1991_2024/UKDA-7363-tab/tab"
-t15 <- read_tsv(file.path(ewcs_dir, "ewcs_1991-2015_ukda_18mar2020.tab"),
-                col_types = cols(.default = col_character()),
-                show_col_types = FALSE)
+# 2001 candidate-country extension — q2b from standalone file
+# NOTE: Previous version incorrectly used y01_q2bm1 from 91-15 trend, which is
+#       actually job tenure ("How many years have you been in this job?"), NOT
+#       education age. The correct variable is q2b from the W3cc standalone file.
+w3cc <- read_tsv("data/raw/ewcs/w3cc_2001/UKDA-5605-tab/tab/cc_ewcs2001.tab",
+                 col_types = cols(.default = col_character()),
+                 show_col_types = FALSE)
 
-# y01_q2bm1 is only for the 2001 extension respondents
-w3cc_vals <- as.numeric(t15$y01_q2bm1)
-w3cc_total <- sum(!is.na(w3cc_vals))
-w3cc_ages <- w3cc_vals[!is.na(w3cc_vals)]
+w3cc_vals <- as.numeric(w3cc$q2b)
+w3cc_studying <- sum(w3cc_vals == 77, na.rm = TRUE)
+w3cc_dk       <- sum(w3cc_vals == 88, na.rm = TRUE)
+w3cc_refusal  <- sum(w3cc_vals == 99, na.rm = TRUE)
+w3cc_ages <- w3cc_vals[!is.na(w3cc_vals) & !(w3cc_vals %in% c(77, 88, 99))]
 
-# Check range — earlier we saw values 1-47, some look like category codes
-cat(sprintf("Total non-missing: %s\n", format(w3cc_total, big.mark = ",")))
-cat(sprintf("Value range: [%g, %g], median: %g, mean: %.1f\n",
-            min(w3cc_ages), max(w3cc_ages), median(w3cc_ages), mean(w3cc_ages)))
-cat("\nDistribution:\n")
-print(table(w3cc_ages))
-cat("\nNOTE: Values 1-10 may be category codes rather than actual ages.\n")
-cat("      Values >= 11 appear to be actual ages. Interpretation unclear.\n\n")
+describe_wave(
+  "W3cc (2001 candidate-country extension) — q2b [actual age, from standalone]",
+  w3cc_ages,
+  list("Still studying (77)" = w3cc_studying,
+       "Don't know (88)"     = w3cc_dk,
+       "Refusal (99)"        = w3cc_refusal),
+  nrow(w3cc)
+)
+
+# Also show ef8r (4-category recode) for comparison
+w3cc_ef8r <- as.numeric(w3cc$ef8r)
+cat("  ef8r recode (4-category):\n")
+cat(sprintf("    1 (up to 15):      %s (%.1f%%)\n",
+            format(sum(w3cc_ef8r == 1, na.rm = TRUE), big.mark = ","),
+            100 * mean(w3cc_ef8r == 1, na.rm = TRUE)))
+cat(sprintf("    2 (16-19):         %s (%.1f%%)\n",
+            format(sum(w3cc_ef8r == 2, na.rm = TRUE), big.mark = ","),
+            100 * mean(w3cc_ef8r == 2, na.rm = TRUE)))
+cat(sprintf("    3 (20+):           %s (%.1f%%)\n",
+            format(sum(w3cc_ef8r == 3, na.rm = TRUE), big.mark = ","),
+            100 * mean(w3cc_ef8r == 3, na.rm = TRUE)))
+cat(sprintf("    4 (still studying): %s (%.1f%%)\n",
+            format(sum(w3cc_ef8r == 4, na.rm = TRUE), big.mark = ","),
+            100 * mean(w3cc_ef8r == 4, na.rm = TRUE)))
+cat("\n")
 
 # =============================================================================
 # W4 (2005) — q2b from standalone
@@ -209,7 +229,7 @@ waves <- list(
   list("W1 (1991)", nrow(w1), w1_ages),
   list("W2 (1995)*", nrow(w2), w2_ages[!is.na(w2_ages)]),
   list("W3 (2000)", nrow(w3), numeric(0)),
-  list("W3cc (2001)", nrow(t15), w3cc_ages),
+  list("W3cc (2001)", nrow(w3cc), w3cc_ages),
   list("W4 (2005)", nrow(w4), w4_ages),
   list("W5 (2010)", nrow(w5), w5_ages)
 )

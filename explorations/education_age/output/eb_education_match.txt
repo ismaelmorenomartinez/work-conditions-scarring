@@ -1,0 +1,195 @@
+================================================================
+  Eurobarometer vs EWCS: Education-Age Comparison & Matching
+================================================================
+
+================================================================
+  PART 1: EB 35A (1991) — Education-Age Variable
+================================================================
+
+EB 35A total observations: 12,819
+Number of variables: 188
+
+v147 (D.8/D.11 AGE EDUCATION) distribution:
+  Total N: 12,819
+  Missing (NA): 103
+  Zero (coded NA): 0
+
+  Value distribution:
+     1 = Up to 14 years      :  2,161 ( 16.9%)
+     2 = 15 years            :  1,059 (  8.3%)
+     3 = 16 years            :  1,690 ( 13.2%)
+     4 = 17 years            :  1,240 (  9.7%)
+     5 = 18 years            :  1,728 ( 13.5%)
+     6 = 19 years            :    955 (  7.4%)
+     7 = 20 years            :    726 (  5.7%)
+     8 = 21 years            :    652 (  5.1%)
+     9 = 22+ years           :  2,446 ( 19.1%)
+    10 = Still studying      :     59 (  0.5%)
+    NA = NA                  :    103 (  0.8%)
+
+  Valid ages (excl studying/NA): 12,657
+  Mean: 17.8 | Median: 18 | SD: 2.8
+
+
+================================================================
+  PART 2: EB 44.2 (1995) — Education-Age Variable
+================================================================
+
+EB 44.2 total observations: 15,986
+Number of variables: 176
+
+v159 (D.8 AGE EDUCATION RECODED) distribution:
+  Total N: 15,986
+  Missing (NA): 0
+
+  Value distribution:
+     1 = Up to 15 years      :  3,578 ( 22.4%)
+     2 = 16-19 years         :  7,265 ( 45.4%)
+     3 = 20+ years           :  5,143 ( 32.2%)
+
+
+================================================================
+  PART 3: Distribution Comparison — EB vs EWCS
+================================================================
+
+--- 1991: EB 35A v147 vs EWCS W1 q2b ---
+
+  EB 35A N:  12,819
+  EWCS W1 N: 12,819
+  Match: YES — identical sample sizes
+
+  Category-by-category comparison:
+  Category           EB 35A   EWCS W1      Diff
+-------------------------------------------------- 
+  Up to 14            2,161     2,264      -103
+  15                  1,059     1,059         0
+  16                  1,690     1,690         0
+  17                  1,240     1,240         0
+  18                  1,728     1,728         0
+  19                    955       955         0
+  20                    726       726         0
+  21                    652       652         0
+  22+                 2,446     2,446         0
+  Studying               59        59         0
+  NA/zero               103         0       103
+
+
+--- 1995: EB 44.2 v159 vs EWCS W2 q2b ---
+
+  EB 44.2 N:  15,986
+  EWCS W2 N:  15,986
+  Match: YES — identical sample sizes
+
+  Category-by-category comparison:
+  Category          EB 44.2   EWCS W2      Diff
+-------------------------------------------------- 
+  Up to 15            3,578     3,578         0
+  16-19               7,265     7,265         0
+  20+                 5,143     5,143         0
+  Studying                0         0         0
+  NA/other                0         0         0
+
+
+================================================================
+  PART 4: Record-Level Matching Feasibility
+================================================================
+
+--- 1991: Row-by-row alignment check ---
+
+  EWCS W1 country-like columns: country
+  EWCS W1 sex-like columns: 
+  EWCS W1 age-like columns: q2a, ef3, age
+
+  Row-by-row education match (EB mapped vs EWCS q2b): NA / 12,819 (NA%)
+  Row-by-row age match (EB v149 vs EWCS q2a): 0 / 12,819 (0.0%)
+  Row-by-row country match (EB v5 vs EWCS country): 1 / 12,819 (0.0%)
+
+
+--- 1995: Row-by-row alignment check ---
+
+  EWCS W2 country-like columns: countryr, countryl, nationty
+  EWCS W2 sex-like columns: q1
+  EWCS W2 age-like columns: q2a, ef3, age
+
+  Row-by-row education match (EB v159 vs EWCS q2b): 5,715 / 15,986 (35.8%)
+  Row-by-row sex match (EB v12 vs EWCS q1): 8,264 / 15,986 (51.7%)
+  Row-by-row age match (EB v13 vs EWCS q2a): 0 / 15,986 (0.0%)
+  Row-by-row country match (EB v5 vs EWCS countryr): 1 / 15,986 (0.0%)
+
+
+================================================================
+  PART 5: Variables in EB Not in EWCS
+================================================================
+
+--- EB 35A (1991) — Key variables potentially missing from EWCS W1 ---
+
+  v146  D.10 Marital status
+  v147  D.11 Age finished education (coded 1-10: 14yr, 15yr, ..., 22+, studying)
+  v148  D.12 Sex
+  v149  D.13 Age exact (continuous)
+  v153  D.14 Household size
+  v154  D.15 Children under 15
+  v155  D.16 Household income (country-specific brackets)
+  v156  D.16R Income quartiles (harmonized)
+  v157  D.17 Occupation (17 categories)
+  v159  D.19 Sector (public/nationalized/private)
+  v160  D.20 Company size
+  v179  P.7 Region (NUTS II)
+  v7-v14 Weighting variables
+
+--- EB 44.2 (1995) — Key variables potentially missing from EWCS W2 ---
+
+  v12   Q.1 Sex
+  v13   Q.2 Age exact (continuous)
+  v33   Q.4A Occupation ISCO
+  v35   Q.5 Company size
+  v36   Q.6 Sector (public/private)
+  v37   Q.7 Contract type
+  v40   Q.10 Years in current job
+  v158  D.7 Marital status
+  v159  D.8 Age education (3-cat)
+  v160  D.12 Household size
+  v161  D.13 Children under 15
+  v169  P.6 Size of community
+  v170  P.7 Region (NUTS II)
+  v7-v11 Weighting variables
+
+
+================================================================
+  PART 6: Summary Assessment
+================================================================
+
+EDUCATION-AGE DATA QUALITY:
+
+  EB 35A (1991) vs EWCS W1:
+    - SAME granularity: year-by-year from 14 to 22+ (censored at both ends)
+    - EB uses codes 1-10; EWCS uses actual ages 14-22, 77
+    - NO improvement from EB — same information, different encoding
+
+  EB 44.2 (1995) vs EWCS W2:
+    - SAME granularity: 3-category recode (up to 15, 16-19, 20+)
+    - EB uses codes 1-3; EWCS uses codes 1-3
+    - NO improvement from EB — same information, same encoding
+
+MATCHING FEASIBILITY:
+
+  If row-by-row match rates are ~100%:
+    -> Records are in the same order -> deterministic 1:1 link
+    -> Can bring in EB demographic variables to enrich EWCS
+
+  If row-by-row match rates are low but aggregate distributions match:
+    -> Same respondents but different row ordering
+    -> Probabilistic matching needed on country + age + sex + education
+    -> With 4 variables and exact N match, should achieve high match rate
+
+  If aggregate distributions don't match:
+    -> Not the same respondents (unlikely given identical N)
+    -> Matching not feasible
+
+BOTTOM LINE:
+
+  The Eurobarometer files DO NOT provide better education-age data than EWCS.
+  Both sources have the same question with the same level of detail.
+  The value of matching is to bring in EB demographic variables (income,
+  marital status, household composition, region at NUTS II level) that may
+  not be in the EWCS standalone files.
