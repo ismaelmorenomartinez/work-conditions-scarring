@@ -1,0 +1,168 @@
+=== Validation Diagnostics: 10_build_analysis_data ===
+Run: 2026-03-31 18:47:23.987517
+
+--- 1. Loading 91-24 trend file ---
+Dimensions: 215545 rows x 240 cols
+Waves: 1, 2, 3, 4, 5, 6, 8
+Years: 1991, 1995, 2000, 2001, 2005, 2010, 2015, 2024
+N by wave (raw):
+  Wave 1: 12819
+  Wave 2: 15986
+  Wave 3: 32754
+  Wave 4: 29676
+  Wave 5: 43816
+  Wave 6: 43850
+  Wave 8: 36644
+
+--- 2. Loading 91-15 trend for ISCED ---
+91-15 trend unique IDs: 123413
+ISCED 5-group coverage by wave:
+  Wave 1: 6901/12819 (53.8%)
+  Wave 2: 439/15986 (2.7%)
+  Wave 3: 986/32754 (3%)
+  Wave 4: 29558/29676 (99.6%)
+  Wave 5: 41565/43816 (94.9%)
+  Wave 6: 43689/43850 (99.6%)
+  Wave 8: 36556/36644 (99.8%)
+
+--- 3. Loading standalone wave files ---
+  W1: 6740 unique IDs
+  W2: 15986 unique IDs
+  W3cc: 11051 unique IDs
+  W4: 9711 unique IDs
+  W5: 43816 unique IDs
+After merges, N = 215545
+
+--- 4. Constructing graduation_age ---
+Dropped W3 main (wave==3 & year==2000): 21703 obs
+
+Direct graduation_age availability by wave (before imputation):
+  Wave 1: 12767/12819 (99.6%)
+  Wave 2: 15986/15986 (100%)
+  Wave 3: 10703/11051 (96.9%)
+  Wave 4: 28626/29676 (96.5%)
+  Wave 5: 42025/43816 (95.9%)
+  Wave 6: 0/43850 (0%)
+  Wave 8: 0/36644 (0%)
+
+--- 4b. Restricting to 27 full-panel countries ---
+Kept 163144 of 193842 (dropped 30698 obs from non-panel countries)
+Countries retained: AT, BE, BG, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HU, IE, IT, LT, LU, LV, MT, NL, PL, PT, RO, SE, SI, SK, UK
+
+--- 5. Cell-median imputation for W6/W8 ---
+Imputation base (W4+W5 with both graduation_age and isced): 56562 obs
+Unique target cells to impute: 937
+Imputation diagnostics:
+  Cells with exact decade match (window=0): 194
+  Cells needing expanded window: 737
+  Cells with no imputation possible: 6
+  Window distribution:
+    Window +-0 decades: 194 cells
+    Window +-1 decades: 236 cells
+    Window +-2 decades: 171 cells
+    Window +-3 decades: 91 cells
+    Window +-4 decades: 43 cells
+    Window +-5 decades: 196 cells
+  Median n_used per cell: 134
+Wave 6: 34477 of 34753 have graduation_age after imputation (99.2%)
+Wave 8: 27381 of 27551 have graduation_age after imputation (99.4%)
+
+Graduation age by wave (after imputation):
+  Wave 1: 12767/12819 (99.6%)
+  Wave 2: 15986/15986 (100%)
+  Wave 3: 10703/11051 (96.9%)
+  Wave 4: 24730/25612 (96.6%)
+  Wave 5: 33953/35372 (96%)
+  Wave 6: 34477/34753 (99.2%)
+  Wave 8: 27381/27551 (99.4%)
+
+--- 6. Derived variables ---
+
+--- 7. Merging UR ---
+UR panel: 1255 rows, 27 countries
+UR merge rate by wave:
+  Wave 1: 7051/12819 (55%)
+  Wave 2: 10308/15986 (64.5%)
+  Wave 3: 2474/11051 (22.4%)
+  Wave 4: 14967/25612 (58.4%)
+  Wave 5: 23815/35372 (67.3%)
+  Wave 6: 26345/34753 (75.8%)
+  Wave 8: 22990/27551 (83.4%)
+
+--- 8. Sample restrictions ---
+Starting N: 163144
+After age 18-45: 96018 (dropped 67126)
+After experience 0-21: 74349 (dropped 21669)
+After non-missing graduation_age: 74349 (dropped 0)
+After non-missing country/wave: 74349 (dropped 0)
+After non-missing ur_entry: 67805 (dropped 6544)
+Final analysis sample: 67805
+
+--- 9. Normalizing calweight ---
+Mean calweight_norm by wave (should be ~1):
+  Wave 1: 1
+  Wave 2: 1
+  Wave 3: 1
+  Wave 4: 1
+  Wave 5: 1
+  Wave 6: 1
+  Wave 8: 1
+
+========== VALIDATION DIAGNOSTICS ==========
+
+--- N by wave (final sample) ---
+  Wave 1: 6895
+  Wave 2: 8677
+  Wave 3: 2457
+  Wave 4: 10051
+  Wave 5: 14526
+  Wave 6: 14276
+  Wave 8: 10923
+
+--- Graduation age distribution by wave ---
+  Wave | Mean | Median | P10 | P90 | N
+  1 | 18.89 | 18 | 15 | 24 | 6895
+  2 | 19.73 | 18 | 15 | 23 | 8677
+  3 | 19.79 | 19 | 17 | 24 | 2457
+  4 | 19.90 | 19 | 17 | 25 | 10051
+  5 | 20.30 | 20 | 17 | 25 | 14526
+  6 | 20.32 | 19 | 18 | 24 | 14276
+  8 | 20.81 | 22 | 18 | 24 | 10923
+
+--- Education 3-group distribution by wave ---
+  Wave | Low% | Med% | High% | N
+  1 | 15.3 | 48.8 | 35.9 | 6895
+  2 | 10.2 | 49.2 | 40.6 | 8677
+  3 | 2.6 | 56.8 | 40.7 | 2457
+  4 | 4.8 | 53.9 | 41.3 | 10051
+  5 | 3.4 | 44.3 | 52.2 | 14526
+  6 | 2.1 | 50.7 | 47.2 | 14276
+  8 | 2.0 | 41.7 | 56.3 | 10923
+
+--- Experience bracket distribution ---
+  0-3: 9012
+  4-6: 9043
+  7-9: 9570
+  10-12: 10413
+  13-15: 10203
+  16-18: 10076
+  19-21: 9488
+
+--- Concordance check (W4+W5): grad-age 3-group vs ISCED 3-group ---
+N for concordance: 23688
+Crosstab:
+        ISCED
+GradAge  High  Low Medium
+  Low      38  744    187
+  Medium  669 1712   9068
+  High   7720  254   3296
+Agreement rate: 74.0% (target >= 90%)
+
+--- UR entry summary ---
+Mean: 0
+SD: 1.26
+Min: -5.88
+Max: 5.16
+
+--- Countries in sample ---
+AT, BE, BG, CY, CZ, DE, DK, EE, EL, ES, FI, FR, HU, IE, IT, LT, LU, LV, MT, NL, PL, PT, RO, SE, SI, SK, UK
